@@ -1,0 +1,27 @@
+'SFTMP',    --> 13
+'CH_K2',    --> 11
+'ALPHA_BF', --> 7
+'RCHRG_DP', --> 2
+'CH_N2',    --> 10
+'SMTMP',    --> 14
+'TIMP',     --> 16
+'CN2',      --> 0
+'SMFMX',    --> 15
+'GW_DELAY', --> 6
+'EPCO',     --> 17
+
+0, 2, 6, 7, 10, 11, 14, 15, 16, 17
+
+20 params with 1 soil layer
+
+Calculating conference intervals
+https://stackoverflow.com/questions/15033511/compute-a-confidence-interval-from-sample-data
+import numpy as np
+import scipy.stats
+
+def mean_confidence_interval(data, confidence=0.95):
+    a = 1.0 * np.array(data)
+    n = len(a)
+    m, se = np.mean(a), scipy.stats.sem(a)
+    h = se * scipy.stats.t.ppf((1 + confidence) / 2., n-1)
+    return m, m-h, m+h
